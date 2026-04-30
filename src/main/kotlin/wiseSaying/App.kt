@@ -4,6 +4,7 @@ class App{
     fun run(){
         println("== 명언 앱 ==")
         var lastId = 0
+        val wiseSayings = mutableListOf<wiseSaying>()
 
         while (true) {
             print("명령) ")
@@ -21,8 +22,20 @@ class App{
                     val author = readln()
                     val id = ++lastId
 
+                    wiseSaying(id, content, author)
+                        .also { wiseSayings.add(it) }
+
                     println("${id}번 명언이 등록되었습니다")
                 }
+
+                "목록"->{
+                    println("번호 / 작가 / 내용")
+                    println("-".repeat(30))
+                    wiseSayings.reversed().forEach{
+                        println("${it.id} / ${it.author} / ${it.content}")
+                    }
+                }
+
             }
         }
     }
