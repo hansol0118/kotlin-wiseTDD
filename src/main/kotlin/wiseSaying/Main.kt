@@ -13,6 +13,14 @@ fun main() {
                 println("프로그램을 종료합니다")
                 break
             }
+            "등록" -> {
+                print("명언: ")
+                val content = readln()
+                print("작가: ")
+                val author = readln()
+
+                println("명언이 등록되었습니다")
+            }
         }
     }
 }
