@@ -10,10 +10,10 @@ class WiseSayingRepository {
         return wiseSaying
             .takeIf { it.isNew() }
             ?.apply {
-                wiseSaying.id = ++lastId
+                id = ++lastId
             }
             ?.also {
-                wiseSayings.add(wiseSaying)
+                wiseSayings.add(it)
             } ?: wiseSaying
     }
 
