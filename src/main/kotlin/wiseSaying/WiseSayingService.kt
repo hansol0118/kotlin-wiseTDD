@@ -1,22 +1,18 @@
 package wiseSaying
 
-class WiseSayingService {
+class WiseSayingService(
+    val wiseSayingRepository: WiseSayingRepository = WiseSayingRepository()
+) {
 
-    var lastId = 0
-    val wiseSayings = mutableListOf<WiseSaying>()
-
-    fun write(content: String, author: String): WiseSaying {
-        val id = ++lastId
-
-        return WiseSaying(id, content, author).also {
-            wiseSayings.add(it)
+    fun write(content: String, author: String): WiseSaying =
+        WiseSaying(content = content, author = author).also {
+            wiseSayingRepository.save(it)
         }
-    }
 
-    fun findAll() = wiseSayings.toList()
+    fun findAll() = wiseSayingRepository.findAll()
 
     fun findById(id: Int): WiseSaying? =
-        wiseSayings.firstOrNull { it.id == id }
+        wiseSayingRepository.findById(id)
 
-    fun delete(wiseSaying: WiseSaying) = wiseSayings.remove(wiseSaying)
+    fun delete(wiseSaying: WiseSaying) = wiseSayingRepository.delete(wiseSaying)
 }
