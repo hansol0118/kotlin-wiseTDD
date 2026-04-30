@@ -1,41 +1,56 @@
 package wiseSaying
 
-class App{
-    fun run(){
-        println("== 명언 앱 ==")
+class App {
+
+    fun run() {
         var lastId = 0
-        val wiseSayings = mutableListOf<wiseSaying>()
+        val wiseSayings = mutableListOf<WiseSaying>()
+
+        println("== 명언 앱 ==")
 
         while (true) {
             print("명령) ")
-            val input = readln()
 
-            when (input) {
+            val input = readln()
+            val rq = Rq(input)
+
+            when (rq.action) {
                 "종료" -> {
-                    println("프로그램을 종료합니다")
+                    println("프로그램을 종료합니다.")
                     break
                 }
+
                 "등록" -> {
-                    print("명언: ")
+                    print("명언 : ")
                     val content = readln()
-                    print("작가: ")
+                    print("작가 : ")
                     val author = readln()
                     val id = ++lastId
 
-                    wiseSaying(id, content, author)
+                    WiseSaying(id, content, author)
                         .also { wiseSayings.add(it) }
 
-                    println("${id}번 명언이 등록되었습니다")
+                    println("${id}번 명언이 등록되었습니다.")
                 }
 
-                "목록"->{
-                    println("번호 / 작가 / 내용")
+                "목록" -> {
+                    println("번호 / 작가 / 명언")
                     println("-".repeat(30))
-                    wiseSayings.reversed().forEach{
-                        println("${it.id} / ${it.author} / ${it.content}")
+                    wiseSayings.reversed().forEach {
+                        println("${it.id}/ ${it.author} / ${it.content}")
                     }
                 }
 
+                "삭제" -> {  //삭제?id=1
+                    val id = rq.getParamAsInt("id", 0)
+
+                    wiseSayings.removeIf {
+                        it.id == id
+                    }
+
+                    println("${id}번 명언이 삭제되었습니다.")
+
+                }
             }
         }
     }
