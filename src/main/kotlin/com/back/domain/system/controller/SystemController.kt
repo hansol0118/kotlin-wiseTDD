@@ -1,5 +1,4 @@
-package com.back.domain.wiseSaying
-
+package com.back.domain.system.controller
 
 class SystemController {
     fun exit() {

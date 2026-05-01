@@ -1,7 +1,7 @@
 package com.back
 
 import com.back.global.Rq
-import com.back.domain.wiseSaying.SystemController
+import com.back.domain.system.controller.SystemController
 import com.back.domain.wiseSaying.controller.WiseSayingController
 import com.back.domain.wiseSaying.entity.WiseSaying
 
