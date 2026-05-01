@@ -1,4 +1,7 @@
-package wiseSaying
+package com.back.domain.wiseSaying.controller
+
+import com.back.global.Rq
+import com.back.domain.wiseSaying.service.WiseSayingService
 
 class WiseSayingController(
     private val wiseSayingService: WiseSayingService = WiseSayingService()

@@ -1,4 +1,9 @@
-package wiseSaying
+package com.back
+
+import com.back.global.Rq
+import com.back.domain.wiseSaying.SystemController
+import com.back.domain.wiseSaying.controller.WiseSayingController
+import com.back.domain.wiseSaying.entity.WiseSaying
 
 class App(
     val wiseSayingController: WiseSayingController = WiseSayingController(),
@@ -14,7 +19,7 @@ class App(
         while (true) {
             print("명령) ")
 
-            val input = readln()
+            val input = readln().trim()
             val rq = Rq(input)
 
             when (rq.action) {
