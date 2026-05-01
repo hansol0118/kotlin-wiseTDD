@@ -12,7 +12,7 @@ class WiseSayingControllerTest {
 
     @BeforeEach
     fun clear() {
-        SingletonScope.wiseSayingRepository.clear()
+        SingletonScope.wiseSayingMemRepository.clear()
     }
 
     @Test
